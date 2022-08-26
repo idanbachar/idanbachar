@@ -1,23 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setUser } from "./redux/slices/userSlice";
+import { getUser } from "./services/github";
+import store from "store2";
 
-function App() {
+const App: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const setUserData = () => {
+    const userStorage = store.get("user");
+    if (userStorage) {
+      dispatch(setUser(userStorage));
+      return;
+    }
+    else {
+      (async () => {
+        const userData = await getUser();
+        if (userData) {
+          dispatch(setUser(userData));
+        }
+      })()
+    }
+  }
+
+  useEffect(() => {
+    setUserData();
+  }, [])
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
