@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { setUser } from "./redux/slices/userSlice";
 import { getUser } from "./services/github";
 import store from "store2";
+import Repositories from "./components/Repositories/Repositories";
+import Navbar from "./components/Navbar/Navbar";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -29,9 +31,24 @@ const App: React.FC = () => {
 
 
   return (
-    <div className="App">
-      <header className="App-header">
-      </header>
+    <div>
+      <Navbar title="" items={[{
+        item: {
+          text: "test",
+          link: "test"
+        },
+        subItems: [
+          {
+            text: "test",
+            link: "test"
+          }
+        ]
+      }]} />
+      <div style={{
+        paddingTop: "2rem"
+      }}>
+        <Repositories repositories={[]} title={""} />
+      </div>
     </div>
   );
 }
