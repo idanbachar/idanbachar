@@ -1,11 +1,12 @@
 export interface INavbar {
   items: IMenuItem[];
-  title: string;
+  title?: string;
+  img_url?: string;
 }
 
 export interface IMenuItem {
   item: INavItem;
-  subItems: INavItem[];
+  subItems?: INavItem[];
 }
 
 export interface INavItem {

@@ -1,0 +1,28 @@
+.container {
+  width: 50vw;
+  min-height: 20vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 6px 0px #a3a1a1;
+  padding: 1rem;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.container:hover {
+  box-shadow: 0 0 36px 0px #a3a1a1;
+  transition: 500ms;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.title:hover{
+  text-decoration: underline;
+}
+
+.description {
+  font-size: 1.2rem;
+}

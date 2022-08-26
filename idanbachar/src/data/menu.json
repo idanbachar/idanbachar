@@ -1,0 +1,36 @@
+[
+  {
+    "item": {
+      "text": "About",
+      "link": "about"
+    }
+  },
+  {
+    "item": {
+      "text": "Games",
+      "link": "games"
+    }
+  },
+  {
+    "item": {
+      "text": "Profile",
+      "link": "profile"
+    }
+  },
+  {
+    "item": {
+      "text": "Settings",
+      "link": "settings"
+    },
+    "subItems": [
+      {
+        "text": "Account",
+        "link": "account"
+      },
+      {
+        "text": "Language",
+        "link": "language"
+      }
+    ]
+  }
+]

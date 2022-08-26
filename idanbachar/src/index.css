@@ -8,6 +8,17 @@ body {
   background-color: #d8dee6;
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.midBody {
+  padding-top: 5rem;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

@@ -1,55 +1,44 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./redux/slices/userSlice";
-import { getUser } from "./services/github";
-import store from "store2";
+import { getAllData } from "./services/github";
 import Repositories from "./components/Repositories/Repositories";
 import Navbar from "./components/Navbar/Navbar";
+import menu from "./data/menu.json"
+import { RootState } from "./redux/store";
+import { setRepositories } from "./redux/slices/repositoriesSlice";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.user.value);
+  const repositories = useSelector((state: RootState) => state.repositories.value);
 
-  const setUserData = () => {
-    const userStorage = store.get("user");
-    if (userStorage) {
-      dispatch(setUser(userStorage));
-      return;
-    }
-    else {
-      (async () => {
-        const userData = await getUser();
-        if (userData) {
-          dispatch(setUser(userData));
-        }
-      })()
+  const getData = async () => {
+    const data = await getAllData();
+    if (data && data.userData && data.repositoriesData) {
+      dispatch(setUser(data.userData));
+      dispatch(setRepositories(data.repositoriesData));
     }
   }
 
   useEffect(() => {
-    setUserData();
+    getData();
   }, [])
 
-
   return (
-    <div>
-      <Navbar title="" items={[{
-        item: {
-          text: "test",
-          link: "test"
-        },
-        subItems: [
-          {
-            text: "test",
-            link: "test"
-          }
-        ]
-      }]} />
-      <div style={{
-        paddingTop: "2rem"
-      }}>
-        <Repositories repositories={[]} title={""} />
+    <div className="App">
+      <Navbar
+        title={user?.name}
+        items={menu}
+        img_url={user?.avatar_url}
+      />
+      <div className="midBody">
+        <Repositories
+          title={""}
+          repositories={repositories}
+        />
       </div>
-    </div>
+    </div >
   );
 }
 
