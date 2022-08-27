@@ -3,3 +3,16 @@
   flex-direction: column;
   gap: 3rem;
 }
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 1000px) {
+  .filters {
+    display: flex;
+    flex-direction: column;
+  }
+}

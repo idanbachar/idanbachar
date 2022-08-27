@@ -2,6 +2,7 @@
   display: flex;
   gap: 1rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .tag {
@@ -20,7 +21,7 @@
 }
 
 .tagSelected:hover {
-    filter: brightness(.9);
+  filter: brightness(0.9);
 }
 
 .tag:hover {

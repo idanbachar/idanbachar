@@ -11,7 +11,11 @@ const MenuItem: React.FC<IMenuItem> = (props) => {
             onMouseOver={() => _setIsSubMenuVisible(true)}
             onMouseLeave={() => _setIsSubMenuVisible(false)}
         >
-            {item.text}
+            <span
+                className="material-symbols-rounded"
+                title={item.link}>
+                {item.text}
+            </span>
             {subItems && subItems.length > 0 &&
                 _isSubMenuVisible &&
                 <ul className={styles.subItemsContainer}>

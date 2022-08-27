@@ -54,11 +54,11 @@ const Repository: React.FC<IRepository> = (props) => {
                     </div>
                     <div>
                         <div className={styles.createdAt} dangerouslySetInnerHTML={{
-                            __html: `Created at<b>${moment(created_at).format("DD/MM/YYYY")}</b>`
+                            __html: `Created at<font face="Lato-Bold">${moment(created_at).format("DD/MM/YYYY")}</font>`
                         }}>
                         </div>
                         <div className={styles.createdAt} dangerouslySetInnerHTML={{
-                            __html: `Updated at<b>${moment(updated_at).format("DD/MM/YYYY")}</b>`
+                            __html: `Updated at<font face="Lato-Bold">${moment(updated_at).format("DD/MM/YYYY")}</font>`
                         }}>
                         </div>
                     </div>

@@ -9,6 +9,7 @@ import styles from "./repositories.module.css"
 const Repositories: React.FC<IRepositories> = (props) => {
     const { repositories, title } = props;
     const [_selectedTag, _setSelectedTag] = useState("");
+    const [_searchBoxValue, _setSearchBoxValue] = useState("");
 
     const getRepositoriesTags = (): string[] => {
         let distinctedTags: string[] = [];
@@ -37,14 +38,24 @@ const Repositories: React.FC<IRepositories> = (props) => {
     }
     return (
         <div className={styles.container}>
-            <h1>{title}</h1>
-            <FilterTags
-                tags={getRepositoriesTags()}
-                selectedTag={_selectedTag}
-                onClick={_setSelectedTag} />
+            <h1 style={{ fontFamily: "Lato-Bold" }}>{title}</h1>
+            <div className={styles.filters}>
+                <input
+                    type={"text"}
+                    placeholder={"Search repository..."}
+                    onChange={(e) => _setSearchBoxValue(e.target.value)}
+                />
+                <FilterTags
+                    tags={getRepositoriesTags()}
+                    selectedTag={_selectedTag}
+                    onClick={_setSelectedTag} />
+            </div>
             {repositories
                 .filter(repository =>
                     (_selectedTag === getRepositoryTag(repository.name).text) || !_selectedTag)
+                .filter(repository => (repository.name.toLowerCase().includes(_searchBoxValue.toLowerCase()) ||
+                    repository.description && repository.description.toLowerCase().includes(_searchBoxValue.toLowerCase()
+                    )))
                 .map((repository, index) =>
                     <Repository
                         {...repository}

@@ -1,20 +1,20 @@
 [
   {
     "item": {
-      "text": "About",
-      "link": "about"
-    }
-  },
-  {
-    "item": {
-      "text": "Games",
-      "link": "games"
-    }
-  },
-  {
-    "item": {
-      "text": "Profile",
+      "text": "account_circle",
       "link": "profile"
+    }
+  },
+  {
+    "item": {
+      "text": "empty_dashboard",
+      "link": "repositories"
+    }
+  },
+  {
+    "item": {
+      "text": "info",
+      "link": "about"
     }
   },
   {

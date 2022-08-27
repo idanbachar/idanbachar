@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Lato-Regular", "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #d8dee6;
@@ -13,10 +13,33 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 3rem;
+  padding-bottom: 5rem;
 }
 
 .midBody {
   padding-top: 5rem;
+}
+
+input[type="text"] {
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  background-color: #f6f6f6;
+}
+
+@font-face {
+  font-family: "Anton-Regular";
+  src: url(./assets/fonts/Anton/Anton-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Lato-Regular";
+  src: url(./assets/fonts/Lato/Lato-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Lato-Bold";
+  src: url(./assets/fonts/Lato/Lato-Bold.ttf);
 }
 
 code {
