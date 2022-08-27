@@ -1,4 +1,9 @@
+import moment from "moment";
 import { IRepository } from "../../interfaces/IRepository";
+import { ITag } from "../../interfaces/ITag";
+import { GetFirstLetterCapital, GetRepositoryCategory } from "../../utils/helpers";
+import Tag from "../Tag/Tag";
+import githubIcon from "../../assets/icons/github-icon.svg";
 import styles from "./repository.module.css"
 
 const Repository: React.FC<IRepository> = (props) => {
@@ -13,11 +18,69 @@ const Repository: React.FC<IRepository> = (props) => {
         updated_at,
         language,
     } = props;
+
+    const getRepositoryTag = (): ITag | null => {
+        const repositoryCategoryType = GetFirstLetterCapital(GetRepositoryCategory(name));
+        switch (repositoryCategoryType) {
+            case "Game":
+                return { text: repositoryCategoryType, backgroundColor: "green" }
+            case "Server":
+                return { text: repositoryCategoryType, backgroundColor: "red" }
+            default: {
+                return { text: repositoryCategoryType, backgroundColor: "lightblue" }
+            }
+        }
+    }
+
+    const openRepositoryInGithub = () => {
+        window.open(html_url, "_blank");
+    }
+
+    const coverImage = `https://raw.githubusercontent.com/idanbachar/${name}/master/images/cover/cover.png`;
+    const tag = getRepositoryTag();
+
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>{name}</h1>
-            <div className={styles.description}>
-                {description}
+            <img
+                src={coverImage}
+                width={"100"}
+                className={styles.cover}
+                alt={""}
+            />
+            <div className={styles.card}>
+                <div className={styles.header}>
+                    <div style={{ display: "flex", gap: ".5rem" }}>
+                        <img src={githubIcon} />
+                        <h1
+                            className={styles.title}
+                            onClick={openRepositoryInGithub}>{name}</h1>
+                    </div>
+                    {tag && <Tag {...tag} />}
+                </div>
+                <div>
+                    <hr />
+                </div>
+                <div className={styles.description}>
+                    {description}
+                </div>
+                <div className={styles.footer}>
+                    <div>
+                        <Tag
+                            text={language}
+                            backgroundColor="blue"
+                        />
+                    </div>
+                    <div>
+                        <div className={styles.createdAt} dangerouslySetInnerHTML={{
+                            __html: `Created at<b>${moment(created_at).format("DD/MM/YYYY")}</b>`
+                        }}>
+                        </div>
+                        <div className={styles.createdAt} dangerouslySetInnerHTML={{
+                            __html: `Updated at<b>${moment(updated_at).format("DD/MM/YYYY")}</b>`
+                        }}>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
