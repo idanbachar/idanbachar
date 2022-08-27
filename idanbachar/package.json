@@ -1,7 +1,7 @@
 {
   "name": "idanbachar",
   "version": "0.1.0",
-  "homepage": "https://idanbachar.github.io/idanbachar",
+  "homepage": "http://idanbachar.github.io/idanbachar",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
