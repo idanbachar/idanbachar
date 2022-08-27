@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar/Navbar";
 import menu from "./data/menu.json"
 import { RootState } from "./redux/store";
 import { setRepositories } from "./redux/slices/repositoriesSlice";
+import Modal from "./components/Modal/Modal";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
+      <Modal />
       <Navbar
         title={user?.name}
         items={menu}

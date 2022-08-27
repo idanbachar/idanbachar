@@ -3,6 +3,8 @@ import { IRepository } from "../../interfaces/IRepository";
 import Tag from "../Tag/Tag";
 import githubIcon from "../../assets/icons/github-icon.svg";
 import styles from "./repository.module.css"
+import { useDispatch } from "react-redux";
+import { setModal } from "../../redux/slices/modalSlice";
 
 const Repository: React.FC<IRepository> = (props) => {
     const {
@@ -15,8 +17,14 @@ const Repository: React.FC<IRepository> = (props) => {
         category_tag
     } = props;
 
+    const dispatch = useDispatch();
+
     const openRepositoryInGithub = () => {
         window.open(html_url, "_blank");
+    }
+
+    const openModal = () => {
+        dispatch(setModal({ component: <Repository {...props} />, isVisible: true }))
     }
 
     const coverImage = `https://raw.githubusercontent.com/idanbachar/${name}/master/images/cover/cover.png`;
@@ -29,13 +37,19 @@ const Repository: React.FC<IRepository> = (props) => {
                 className={styles.cover}
                 alt={""}
             />
-            <div className={styles.card}>
+            <div
+                className={styles.card}
+                onClick={openModal}
+            >
                 <div className={styles.header}>
                     <div style={{ display: "flex", gap: ".5rem" }}>
                         <img src={githubIcon} />
                         <h1
                             className={styles.title}
-                            onClick={openRepositoryInGithub}>{name}</h1>
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                openRepositoryInGithub();
+                            }}>{name}</h1>
                     </div>
                     <Tag {...category_tag} />
                 </div>
