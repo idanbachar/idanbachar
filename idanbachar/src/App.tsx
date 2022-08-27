@@ -34,7 +34,7 @@ const App: React.FC = () => {
       />
       <div className="midBody">
         <Repositories
-          title={""}
+          title={"Repositories"}
           repositories={repositories}
         />
       </div>

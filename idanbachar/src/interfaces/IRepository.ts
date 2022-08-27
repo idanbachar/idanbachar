@@ -1,4 +1,5 @@
 import { IUser } from "./IGithub";
+import { ITag } from "./ITag";
 
 export interface IRepositories {
   repositories: IRepository[];
@@ -16,4 +17,5 @@ export interface IRepository {
   created_at: Date;
   updated_at: Date;
   language: string;
+  category_tag: ITag;
 }

@@ -8,7 +8,8 @@ const Tag: React.FC<ITag> = (props) => {
             color: "white",
             borderRadius: "1.2rem",
             padding: "0 1rem",
-        }}>{text}</h4>
+        }}
+        >{text}</h4>
     )
 
 }

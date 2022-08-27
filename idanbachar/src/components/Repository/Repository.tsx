@@ -1,43 +1,25 @@
 import moment from "moment";
 import { IRepository } from "../../interfaces/IRepository";
-import { ITag } from "../../interfaces/ITag";
-import { GetFirstLetterCapital, GetRepositoryCategory } from "../../utils/helpers";
 import Tag from "../Tag/Tag";
 import githubIcon from "../../assets/icons/github-icon.svg";
 import styles from "./repository.module.css"
 
 const Repository: React.FC<IRepository> = (props) => {
     const {
-        id,
         name,
-        full_name,
-        owner,
         html_url,
         description,
         created_at,
         updated_at,
         language,
+        category_tag
     } = props;
-
-    const getRepositoryTag = (): ITag | null => {
-        const repositoryCategoryType = GetFirstLetterCapital(GetRepositoryCategory(name));
-        switch (repositoryCategoryType) {
-            case "Game":
-                return { text: repositoryCategoryType, backgroundColor: "green" }
-            case "Server":
-                return { text: repositoryCategoryType, backgroundColor: "red" }
-            default: {
-                return { text: repositoryCategoryType, backgroundColor: "lightblue" }
-            }
-        }
-    }
 
     const openRepositoryInGithub = () => {
         window.open(html_url, "_blank");
     }
 
     const coverImage = `https://raw.githubusercontent.com/idanbachar/${name}/master/images/cover/cover.png`;
-    const tag = getRepositoryTag();
 
     return (
         <div className={styles.container}>
@@ -55,7 +37,7 @@ const Repository: React.FC<IRepository> = (props) => {
                             className={styles.title}
                             onClick={openRepositoryInGithub}>{name}</h1>
                     </div>
-                    {tag && <Tag {...tag} />}
+                    <Tag {...category_tag} />
                 </div>
                 <div>
                     <hr />
@@ -67,7 +49,7 @@ const Repository: React.FC<IRepository> = (props) => {
                     <div>
                         <Tag
                             text={language}
-                            backgroundColor="blue"
+                            backgroundColor={"blue"}
                         />
                     </div>
                     <div>
