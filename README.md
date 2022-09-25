@@ -1,4 +1,5 @@
 ### Hi there 👋
+### Check my personal website! <a href="https://idanbachar.github.io/idanbachar/">https://idanbachar.github.io/idanbachar/</a>
 
 <!--
 **idanbachar/idanbachar** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
