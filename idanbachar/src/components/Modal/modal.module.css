@@ -12,10 +12,10 @@
 }
 
 .modalCard {
-  background-color: white;
+  background-color: #f8f8f8;
   position: absolute;
-  width: 80%;
-  height: 80%;
+  width: 60%;
+  height: 90%;
   padding-top: 3rem;
   box-sizing: border-box;
 }

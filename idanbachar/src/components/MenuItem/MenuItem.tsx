@@ -12,7 +12,6 @@ const MenuItem: React.FC<IMenuItem> = (props) => {
             onMouseLeave={() => _setIsSubMenuVisible(false)}
         >
             <span
-                className="material-symbols-rounded"
                 title={item.link}>
                 {item.text}
             </span>

@@ -8,6 +8,11 @@ body {
   background-color: #d8dee6;
 }
 
+table {
+  background-color: white;
+  border: lightslategray;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -21,10 +26,8 @@ body {
 }
 
 input[type="text"] {
-  border: none;
-  outline: none;
-  border-radius: 1rem;
   background-color: #f6f6f6;
+  border: none;
 }
 
 @font-face {

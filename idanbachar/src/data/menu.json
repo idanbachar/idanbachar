@@ -1,36 +1,8 @@
 [
   {
     "item": {
-      "text": "account_circle",
-      "link": "profile"
-    }
-  },
-  {
-    "item": {
-      "text": "empty_dashboard",
-      "link": "repositories"
-    }
-  },
-  {
-    "item": {
-      "text": "info",
-      "link": "about"
-    }
-  },
-  {
-    "item": {
-      "text": "Settings",
+      "text": "Repositories",
       "link": "settings"
-    },
-    "subItems": [
-      {
-        "text": "Account",
-        "link": "account"
-      },
-      {
-        "text": "Language",
-        "link": "language"
-      }
-    ]
+    }
   }
 ]

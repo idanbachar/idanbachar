@@ -5,6 +5,7 @@ import githubIcon from "../../assets/icons/github-icon.svg";
 import styles from "./repository.module.css"
 import { useDispatch } from "react-redux";
 import { setModal } from "../../redux/slices/modalSlice";
+import RepositoryReadme from "./RepositoryReadme/RepositoryReadme";
 
 const Repository: React.FC<IRepository> = (props) => {
     const {
@@ -24,7 +25,7 @@ const Repository: React.FC<IRepository> = (props) => {
     }
 
     const openModal = () => {
-        dispatch(setModal({ component: <Repository {...props} />, isVisible: true }))
+        dispatch(setModal({ component: <RepositoryReadme repository={props} />, isVisible: true }))
     }
 
     const coverImage = `https://raw.githubusercontent.com/idanbachar/${name}/master/images/cover/cover.png`;
@@ -43,7 +44,7 @@ const Repository: React.FC<IRepository> = (props) => {
             >
                 <div className={styles.header}>
                     <div style={{ display: "flex", gap: ".5rem" }}>
-                        <img src={githubIcon} />
+                        <img src={githubIcon} width={"25"} />
                         <h1
                             className={styles.title}
                             onClick={(e) => {

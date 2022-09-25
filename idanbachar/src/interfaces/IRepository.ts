@@ -19,3 +19,7 @@ export interface IRepository {
   language: string;
   category_tag: ITag;
 }
+
+export interface IRepositoryReadme {
+  repository: IRepository;
+}
