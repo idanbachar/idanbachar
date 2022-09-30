@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./redux/slices/userSlice";
-import { getAllData } from "./services/github";
+import { getAllData, USERNAME } from "./services/github";
 import Repositories from "./components/Repositories/Repositories";
 import Navbar from "./components/Navbar/Navbar";
 import menu from "./data/menu.json"
@@ -18,7 +18,7 @@ const App: React.FC = () => {
     const data = await getAllData();
     if (data && data.userData && data.repositoriesData) {
       dispatch(setUser(data.userData));
-      dispatch(setRepositories(data.repositoriesData));
+      dispatch(setRepositories(data.repositoriesData.filter(repository => !repository.name.includes(USERNAME))));
     }
   }
 

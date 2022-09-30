@@ -22,18 +22,10 @@ table {
 }
 
 .midBody {
-  /* background-color: #343745; */
   padding-top: 5rem;
+  width: 70vw;
 }
-
-input[type="text"] {
-  background-color: #f6f6f6;
-  border: none;
-  height: 2.5rem;
-  font-size: 1.25rem;
-  outline: none;
-}
-
+ 
 @font-face {
   font-family: "Anton-Regular";
   src: url(./assets/fonts/Anton/Anton-Regular.ttf);

@@ -38,31 +38,34 @@ const Repositories: React.FC<IRepositories> = (props) => {
     }
     return (
         <div className={styles.container}>
-            <h1 style={{ fontFamily: "Lato-Bold" }}>{title}</h1>
-            <input
-                type={"text"}
-                placeholder={"Search repository..."}
-                onChange={(e) => _setSearchBoxValue(e.target.value)}
-            />
-            <div className={styles.filters}>
+            <h1 style={{ fontFamily: "Lato-Bold", borderLeft: "1px solid black" }}>{title}</h1>
+            <div className={styles.searchContainer}>
+                <input
+                    className={styles.searchInput}
+                    type={"text"}
+                    placeholder={"Search repository..."}
+                    onChange={(e) => _setSearchBoxValue(e.target.value)}
+                />
                 <FilterTags
                     tags={getRepositoriesTags()}
                     selectedTag={_selectedTag}
                     onClick={_setSelectedTag} />
             </div>
-            {repositories
-                .filter(repository =>
-                    (_selectedTag === getRepositoryTag(repository.name).text) || !_selectedTag)
-                .filter(repository => (repository.name.toLowerCase().includes(_searchBoxValue.toLowerCase()) ||
-                    repository.description && repository.description.toLowerCase().includes(_searchBoxValue.toLowerCase()
-                    )))
-                .map((repository, index) =>
-                    <Repository
-                        {...repository}
-                        key={index}
-                        category_tag={getRepositoryTag(repository.name)}
-                    />
-                )}
+            <div className={styles.repositories}>
+                {repositories
+                    .filter(repository =>
+                        (_selectedTag === getRepositoryTag(repository.name).text) || !_selectedTag)
+                    .filter(repository => (repository.name.toLowerCase().includes(_searchBoxValue.toLowerCase()) ||
+                        repository.description && repository.description.toLowerCase().includes(_searchBoxValue.toLowerCase()
+                        )))
+                    .map((repository, index) =>
+                        <Repository
+                            {...repository}
+                            key={index}
+                            category_tag={getRepositoryTag(repository.name)}
+                        />
+                    )}
+            </div>
         </div>
     )
 

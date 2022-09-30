@@ -3,8 +3,7 @@ import store from "store2";
 import { IUser } from "../interfaces/IGithub";
 import { IRepository } from "../interfaces/IRepository";
 
-const USERNAME = "idanbachar";
-
+export const USERNAME = "idanbachar";
 export interface IAllGithubData {
   userData: IUser | null;
   repositoriesData: IRepository[] | null;
