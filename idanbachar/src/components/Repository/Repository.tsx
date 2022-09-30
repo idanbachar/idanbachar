@@ -32,12 +32,12 @@ const Repository: React.FC<IRepository> = (props) => {
 
     return (
         <div className={styles.container}>
-            <img
+            {/* <img
                 src={coverImage}
                 width={"100"}
                 className={styles.cover}
                 alt={""}
-            />
+            /> */}
             <div
                 className={styles.card}
                 onClick={openModal}

@@ -7,8 +7,7 @@
 .filters {
   display: flex;
   gap: 1rem;
-  justify-content: space-between;
-  background-color: #e4e9ef;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 1000px) {

@@ -39,12 +39,12 @@ const Repositories: React.FC<IRepositories> = (props) => {
     return (
         <div className={styles.container}>
             <h1 style={{ fontFamily: "Lato-Bold" }}>{title}</h1>
+            <input
+                type={"text"}
+                placeholder={"Search repository..."}
+                onChange={(e) => _setSearchBoxValue(e.target.value)}
+            />
             <div className={styles.filters}>
-                <input
-                    type={"text"}
-                    placeholder={"Search repository..."}
-                    onChange={(e) => _setSearchBoxValue(e.target.value)}
-                />
                 <FilterTags
                     tags={getRepositoriesTags()}
                     selectedTag={_selectedTag}
