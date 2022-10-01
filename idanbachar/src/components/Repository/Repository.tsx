@@ -7,8 +7,7 @@ import styles from "./repository.module.css"
 import { useDispatch } from "react-redux";
 import { setModal } from "../../redux/slices/modalSlice";
 import RepositoryReadme from "./RepositoryReadme/RepositoryReadme";
-import { USERNAME } from "../../services/github";
-import axios from "axios";
+import { getCoverImage, USERNAME } from "../../services/github";
 
 const Repository: React.FC<IRepository> = (props) => {
     const {
@@ -18,7 +17,6 @@ const Repository: React.FC<IRepository> = (props) => {
         created_at,
         updated_at,
         language,
-        category_tag
     } = props;
 
     const dispatch = useDispatch();
@@ -26,7 +24,8 @@ const Repository: React.FC<IRepository> = (props) => {
 
     useEffect(() => {
         (async () => {
-            await getCoverImage();
+            const coverImageUrl = await getCoverImage(name);
+            _setCoverImage(coverImageUrl);
         })()
     }, [])
 
@@ -38,21 +37,6 @@ const Repository: React.FC<IRepository> = (props) => {
         dispatch(setModal({ component: <RepositoryReadme repository={props} />, isVisible: true }))
     }
 
-    const getCoverImage = async () => {
-        await fetch(`https://raw.githubusercontent.com/${USERNAME}/${name}/master/images/cover/cover.png`)
-            .then(response => {
-                response.blob().then(blob => {
-                    const imageUrl = URL.createObjectURL(blob);
-                    _setCoverImage(imageUrl);
-                }).catch(error => {
-                    console.log(error);
-                    _setCoverImage("https://en.wikipedia.org/static/images/project-logos/enwiki.png");
-                })
-            }).catch(error => {
-                console.log(error);
-                _setCoverImage("https://en.wikipedia.org/static/images/project-logos/enwiki.png");
-            })
-    }
 
     return (
         <div className={styles.container}>

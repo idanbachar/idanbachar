@@ -61,7 +61,7 @@ const Repositories: React.FC<IRepositories> = (props) => {
                     .map((repository, index) =>
                         <Repository
                             {...repository}
-                            key={index}
+                            key={repository.id + index}
                             category_tag={getRepositoryTag(repository.name)}
                         />
                     )}
