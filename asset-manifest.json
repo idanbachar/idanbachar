@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/idanbachar/static/css/main.ecc49500.css",
-    "main.js": "/idanbachar/static/js/main.40308fd5.js",
+    "main.css": "/idanbachar/static/css/main.d3efbdf5.css",
+    "main.js": "/idanbachar/static/js/main.6e92a8b1.js",
     "static/js/787.76865afe.chunk.js": "/idanbachar/static/js/787.76865afe.chunk.js",
     "static/media/Anton-Regular.ttf": "/idanbachar/static/media/Anton-Regular.170b842f9a8cd6150a0d.ttf",
     "static/media/Lato-Regular.ttf": "/idanbachar/static/media/Lato-Regular.9d883d540ee2b4de8024.ttf",
     "static/media/Lato-Bold.ttf": "/idanbachar/static/media/Lato-Bold.636be8de934918e38ed9.ttf",
+    "static/media/noImage.png": "/idanbachar/static/media/noImage.8d506d6ea55b0e233fc2.png",
+    "static/media/github-icon.svg": "/idanbachar/static/media/github-icon.3b4375b1cacddb7910737e992dd73aad.svg",
     "index.html": "/idanbachar/index.html",
-    "static/media/github-icon.svg": "/idanbachar/static/media/github-icon.fb8e1ac8b755914862fd7dfc80310a5e.svg",
-    "main.ecc49500.css.map": "/idanbachar/static/css/main.ecc49500.css.map",
-    "main.40308fd5.js.map": "/idanbachar/static/js/main.40308fd5.js.map",
+    "main.d3efbdf5.css.map": "/idanbachar/static/css/main.d3efbdf5.css.map",
+    "main.6e92a8b1.js.map": "/idanbachar/static/js/main.6e92a8b1.js.map",
     "787.76865afe.chunk.js.map": "/idanbachar/static/js/787.76865afe.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ecc49500.css",
-    "static/js/main.40308fd5.js"
+    "static/css/main.d3efbdf5.css",
+    "static/js/main.6e92a8b1.js"
   ]
 }
