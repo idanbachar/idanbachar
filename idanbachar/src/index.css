@@ -18,12 +18,12 @@ table {
   flex-direction: column;
   align-items: center;
   gap: 3rem;
-  padding-bottom: 5rem;
 }
 
 .midBody {
   padding-top: 5rem;
   width: 70vw;
+  min-height: 100vh;
 }
  
 @font-face {

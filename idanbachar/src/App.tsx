@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./redux/slices/userSlice";
-import { getAllData, USERNAME } from "./services/github";
+import { GetAllData, USERNAME } from "./services/github";
 import Repositories from "./components/Repositories/Repositories";
 import Navbar from "./components/Navbar/Navbar";
 import menu from "./data/menu.json"
 import { RootState } from "./redux/store";
 import { setRepositories } from "./redux/slices/repositoriesSlice";
 import Modal from "./components/Modal/Modal";
+import Footer from "./components/Footer/Footer";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const App: React.FC = () => {
   const repositories = useSelector((state: RootState) => state.repositories.value);
 
   const getData = async () => {
-    const data = await getAllData();
+    const data = await GetAllData();
     if (data && data.userData && data.repositoriesData) {
       dispatch(setUser(data.userData));
       dispatch(setRepositories(data.repositoriesData.filter(repository => !repository.name.includes(USERNAME))));
@@ -36,11 +37,12 @@ const App: React.FC = () => {
       />
       <div className="midBody">
         <Repositories
-          title={"Repositories"}
+          title={"My repositories"}
           repositories={repositories}
         />
       </div>
-    </div >
+      <Footer />
+    </div>
   );
 }
 

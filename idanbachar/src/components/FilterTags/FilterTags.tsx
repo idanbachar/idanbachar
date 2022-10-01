@@ -5,7 +5,7 @@ const FilterTags: React.FC<IFilterTags> = (props) => {
     const { tags, selectedTag, onClick } = props;
     return (
         <div className={styles.container}>
-            <span style={{ color: "white" }}>
+            <span className={styles.filtersTitle}>
                 Filters:
             </span>
             <div className={styles.tags}>

@@ -2,6 +2,7 @@ import axios from "axios";
 import store from "store2";
 import { IUser } from "../interfaces/IGithub";
 import { IRepository } from "../interfaces/IRepository";
+import noImage from "../assets/images/noImage.png";
 
 export const USERNAME = "idanbachar";
 export interface IAllGithubData {
@@ -9,13 +10,13 @@ export interface IAllGithubData {
   repositoriesData: IRepository[] | null;
 }
 
-export const getAllData = async (): Promise<IAllGithubData | null> => {
+export const GetAllData = async (): Promise<IAllGithubData | null> => {
   try {
     const allDataStorage: IAllGithubData = store.session.get("githubData");
     if (allDataStorage) return allDataStorage;
 
-    const userData = await getUser();
-    const repositoriesData = await getRepositories();
+    const userData = await GetUser();
+    const repositoriesData = await GetRepositories();
     const githubData = {
       userData,
       repositoriesData,
@@ -28,7 +29,7 @@ export const getAllData = async (): Promise<IAllGithubData | null> => {
   }
 };
 
-export const getUser = async (): Promise<IUser | null> => {
+export const GetUser = async (): Promise<IUser | null> => {
   try {
     const user: IUser = await (
       await axios(`https://api.github.com/users/${USERNAME}`)
@@ -40,7 +41,7 @@ export const getUser = async (): Promise<IUser | null> => {
   }
 };
 
-export const getRepositories = async (): Promise<IRepository[] | null> => {
+export const GetRepositories = async (): Promise<IRepository[] | null> => {
   try {
     const repositories: IRepository[] = await (
       await axios(`https://api.github.com/users/${USERNAME}/repos`)
@@ -52,7 +53,21 @@ export const getRepositories = async (): Promise<IRepository[] | null> => {
   }
 };
 
-export const getCoverImage = async (
+export const GetReadmeFile = async (
+  repositoryName: string
+): Promise<string> => {
+  try {
+    const response = await axios(
+      `https://raw.githubusercontent.com/${USERNAME}/${repositoryName}/master/README.md`
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return "";
+  }
+};
+
+export const GetCoverImage = async (
   repositoryName: string
 ): Promise<string> => {
   const url = `https://raw.githubusercontent.com/${USERNAME}/${repositoryName}/master/images/cover/cover.png`;
@@ -62,11 +77,11 @@ export const getCoverImage = async (
       const blob = await response.blob();
       return URL.createObjectURL(blob);
     } else if (response.status === 404) {
-      return "https://en.wikipedia.org/static/images/project-logos/enwiki.png";
+      return noImage;
     }
-    return "https://en.wikipedia.org/static/images/project-logos/enwiki.png";
+    return noImage;
   } catch (error) {
     console.log(error);
-    return "https://en.wikipedia.org/static/images/project-logos/enwiki.png";
+    return noImage;
   }
 };

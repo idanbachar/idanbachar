@@ -15,7 +15,7 @@ const Repositories: React.FC<IRepositories> = (props) => {
         let distinctedTags: string[] = [];
         const tags = repositories
             .map(repository =>
-                getRepositoryTag(repository.name));
+                getRepositoryTagColor(repository.name));
         for (let i = 0; i < tags.length; i++) {
             if (!distinctedTags.includes(tags[i].text)) {
                 distinctedTags.push(tags[i].text)
@@ -24,7 +24,7 @@ const Repositories: React.FC<IRepositories> = (props) => {
         return distinctedTags
     }
 
-    const getRepositoryTag = (repositoryName: string): ITag => {
+    const getRepositoryTagColor = (repositoryName: string): ITag => {
         const repositoryCategoryType = GetFirstLetterCapital(GetRepositoryCategory(repositoryName));
         switch (repositoryCategoryType) {
             case "Game":
@@ -38,7 +38,7 @@ const Repositories: React.FC<IRepositories> = (props) => {
     }
     return (
         <div className={styles.container}>
-            <h1 style={{ fontFamily: "Lato-Bold", borderLeft: "1px solid black" }}>{title}</h1>
+            <h1 style={{ fontFamily: "Lato-Bold" }}>{title}</h1>
             <div className={styles.searchContainer}>
                 <input
                     className={styles.searchInput}
@@ -54,15 +54,15 @@ const Repositories: React.FC<IRepositories> = (props) => {
             <div className={styles.repositories}>
                 {repositories
                     .filter(repository =>
-                        (_selectedTag === getRepositoryTag(repository.name).text) || !_selectedTag)
+                        (_selectedTag === getRepositoryTagColor(repository.name).text) || !_selectedTag)
                     .filter(repository => (repository.name.toLowerCase().includes(_searchBoxValue.toLowerCase()) ||
                         repository.description && repository.description.toLowerCase().includes(_searchBoxValue.toLowerCase()
                         )))
-                    .map((repository, index) =>
+                    .map((repository) =>
                         <Repository
                             {...repository}
-                            key={repository.id + index}
-                            category_tag={getRepositoryTag(repository.name)}
+                            key={repository.id}
+                            category_tag={getRepositoryTagColor(repository.name)}
                         />
                     )}
             </div>

@@ -7,7 +7,7 @@ import styles from "./repository.module.css"
 import { useDispatch } from "react-redux";
 import { setModal } from "../../redux/slices/modalSlice";
 import RepositoryReadme from "./RepositoryReadme/RepositoryReadme";
-import { getCoverImage, USERNAME } from "../../services/github";
+import { GetCoverImage, USERNAME } from "../../services/github";
 
 const Repository: React.FC<IRepository> = (props) => {
     const {
@@ -24,7 +24,7 @@ const Repository: React.FC<IRepository> = (props) => {
 
     useEffect(() => {
         (async () => {
-            const coverImageUrl = await getCoverImage(name);
+            const coverImageUrl = await GetCoverImage(name);
             _setCoverImage(coverImageUrl);
         })()
     }, [])
@@ -35,6 +35,17 @@ const Repository: React.FC<IRepository> = (props) => {
 
     const openModal = () => {
         dispatch(setModal({ component: <RepositoryReadme repository={props} />, isVisible: true }))
+    }
+
+    const getProgrammingLanguageColor = () => {
+        if (language === "C#") {
+            return "green";
+        } else if (language === "TypeScript") {
+            return "blue"
+        } else if (language === "JavaScript") {
+            return "orange"
+        }
+        return "blue"
     }
 
 
@@ -62,7 +73,7 @@ const Repository: React.FC<IRepository> = (props) => {
                 <div className={styles.footer}>
                     <Tag
                         text={language}
-                        backgroundColor={"blue"}
+                        backgroundColor={getProgrammingLanguageColor()}
                     />
                     <div>
                         <div className={styles.createdAt} dangerouslySetInnerHTML={{

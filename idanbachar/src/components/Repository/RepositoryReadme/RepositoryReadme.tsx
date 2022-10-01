@@ -1,10 +1,10 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { IRepositoryReadme } from "../../../interfaces/IRepository";
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from "rehype-raw";
 import styles from "./repositoryReadme.module.css"
+import { GetReadmeFile } from "../../../services/github";
 
 const RepositoryReadme: React.FC<IRepositoryReadme> = (props) => {
     const { repository } = props;
@@ -12,8 +12,8 @@ const RepositoryReadme: React.FC<IRepositoryReadme> = (props) => {
 
     useEffect(() => {
         (async () => {
-            const readmeData = await axios(`https://raw.githubusercontent.com/idanbachar/${repository.name}/master/README.md`);
-            _setReadme(readmeData.data);
+            const readme = await GetReadmeFile(repository.name);
+            _setReadme(readme);
         })()
     }, [])
 
